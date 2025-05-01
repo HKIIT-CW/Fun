@@ -230,9 +230,9 @@
                     }, this.notes);
                     
                     this.pattern.interval = '8n';
-                    this.pattern.start(0);
+                    this.pattern.t(0);
                     
-                    Tone.Transport.start();
+                    Tone.Transport.t();
                 },
                 
                 stop() {
@@ -1113,42 +1113,7 @@
             }
         }
         
-        // Star background
-        const stars = [];
-        function initStars() {
-            stars.length = 0;
-            const starCount = Math.floor(canvas.width * canvas.height / 1000);
-            
-            for (let i = 0; i < starCount; i++) {
-                stars.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: 0.5 + Math.random() * 1.5,
-                    speed: 0.2 + Math.random() * 0.8
-                });
-            }
-        }
         
-        function updateStars() {
-            stars.forEach(star => {
-                star.y += star.speed;
-                
-                // Wrap stars to top when they reach bottom
-                if (star.y > canvas.height) {
-                    star.y = 0;
-                    star.x = Math.random() * canvas.width;
-                }
-            });
-        }
-        
-        function renderStars() {
-            const isDarkMode = document.documentElement.classList.contains('dark');
-            ctx.fillStyle = isDarkMode ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.5)';
-            
-            stars.forEach(star => {
-                ctx.fillRect(star.x, star.y, star.size, star.size);
-            });
-        }
         
         // Cloud background
         const clouds = [];
