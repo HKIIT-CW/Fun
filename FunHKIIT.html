@@ -1154,7 +1154,7 @@
         const clouds = [];
         function initClouds() {
             clouds.length = 0;
-            const cloudCount = 8;
+            const cloudCount = 3;
             
             for (let i = 0; i < cloudCount; i++) {
                 clouds.push({
@@ -1170,7 +1170,7 @@
         
         function updateClouds() {
             clouds.forEach(cloud => {
-                cloud.y += cloud.speed * 0.5;
+                cloud.y += cloud.speed * 1.5;
                 
                 // Wrap clouds to top when they reach bottom
                 if (cloud.y - cloud.height > canvas.height) {
