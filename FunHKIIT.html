@@ -1283,15 +1283,15 @@
         
         function resizeCanvas() {
             const container = canvas.parentElement;
-            const dpr = window.devicePixelRatio || 1;
+            //const dpr = window.devicePixelRatio || 1;
 
-            canvas.width = container.clientWidth * dpr;
-            canvas.height = (window.innerHeight * 0.75) * dpr;
+            canvas.width = container.clientWidth ;
+            canvas.height = (window.innerHeight * 0.75);
 
             canvas.style.width = (container.clientWidth) + "px";
             canvas.style.height = (window.innerHeight * 0.75) + "px";
 
-            ctx.scale(dpr, dpr); // 縮放繪製內容
+           
             // Re-initialize stars and clouds after resize
             if (clouds.length === 0) {
                 initClouds();
