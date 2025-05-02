@@ -17,7 +17,7 @@
         }
         ::-webkit-scrollbar {
          -webkit-appearance: none;
-        width: 62px !important;
+         width: 80px !important;
         }
 
         ::-webkit-scrollbar:vertical {
@@ -133,19 +133,19 @@
             </div>
             <div id="gameOver" class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center flex-col hidden">
                 <h2 class="text-white text-3xl font-bold mb-4">Game Over</h2>
-                <p class="text-white text-xl mb-6">Final Score: <span id="finalScore">0</span></p>
+                <p class="text-white text-xl mb-6">Final Score: <span id="finalScore" style="color:red;"><b>0</b></span></p>
 
                 <p class="text-white text-xl mb-6">
-                    Want get the skills just like game?</br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Join US ! HKIIT at CW</br>
+                    &nbsp;&nbsp;想好似打機咁,輕鬆獲得技能?</br></br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加入我地啦! HKIIT at CW</br>
                 </p>
                 <p style="font: size 1px; color:white;">
-                    &nbsp;&nbsp;&nbsp;IT114105  HD in Software Engineering</br>
-                    &nbsp;&nbsp;&nbsp;IT114107  HD in Game Software Development</br>
-                    &nbsp;&nbsp;&nbsp;IT114122  HD in Cybersecurity</br>
-                    &nbsp;&nbsp;&nbsp;IT114124  HD in AI and Smart Technology</br></br>
-                    &nbsp;&nbsp;&nbsp;FS113002N DFS (Information Technology)</br>
-                    &nbsp;&nbsp;&nbsp;FS113002S DFS (Digital Media Studies)</br></br></br>
+                    &nbsp;&nbsp;&nbsp;IT114105  軟件工程高級文憑</br>
+                    &nbsp;&nbsp;&nbsp;IT114107  遊戲軟件開發高級文憑</br>
+                    &nbsp;&nbsp;&nbsp;IT114122  網絡安全高級文憑</br>
+                    &nbsp;&nbsp;&nbsp;IT114124  人工智能及智能科技高級文憑</br></br>
+                    &nbsp;&nbsp;&nbsp;FS113002N 基礎課程文憑（資訊科技）</br>
+                    &nbsp;&nbsp;&nbsp;FS113002S 基礎課程文憑（數碼媒體學）</br></br></br>
                 </p>
                 
                 <button id="restartButton" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition">Play Again</button>
@@ -356,25 +356,25 @@
         const POWERUP_TYPES = {
             CS: {
                 name: "CS",
-                color: '#9333EA', // Purple
+                color: '#78D2F7', // Purple
                 description: "Tracking bullets",
                 textColor: "#FFFFFF"
             },
             GSD: {
                 name: "GSD",
-                color: '#F59E0B', // Amber
+                color: '#D3308B', // Amber
                 description: "Spread shots",
                 textColor: "#FFFFFF"
             },
             SE: {
                 name: "SE",
-                color: '#10B981', // Emerald
+                color: '#009B67', // Emerald
                 description: "Triple shots",
                 textColor: "#FFFFFF"
             },
             AIST: {
                 name: "AIST",
-                color: '#3B82F6', // Blue
+                color: '#E2C142', // Blue
                 description: "Laser beam",
                 textColor: "#FFFFFF"
             }
@@ -1283,15 +1283,15 @@
         
         function resizeCanvas() {
             const container = canvas.parentElement;
-            //const dpr = window.devicePixelRatio || 1;
+            const dpr = window.devicePixelRatio || 1;
 
-            canvas.width = container.clientWidth ;
-            canvas.height = (window.innerHeight * 0.75) ;
+            canvas.width = container.clientWidth * dpr;
+            canvas.height = (window.innerHeight * 0.75) * dpr;
 
             canvas.style.width = (container.clientWidth) + "px";
             canvas.style.height = (window.innerHeight * 0.75) + "px";
 
-            //ctx.scale(dpr, dpr); // 縮放繪製內容
+            ctx.scale(dpr, dpr); // 縮放繪製內容
             // Re-initialize stars and clouds after resize
             if (clouds.length === 0) {
                 initClouds();
