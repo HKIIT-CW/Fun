@@ -734,12 +734,12 @@
                 ctx.fillRect(this.x - this.width/2, this.y - this.height, this.width, this.height);
                 
                 // Glow effect
-                //ctx.save();
+                ctx.save();
                 //ctx.shadowColor = POWERUP_TYPES.AIST.color;
                 //ctx.shadowBlur = 15;
-                ctx.fillStyle = gradient;
+                //ctx.fillStyle = gradient;
                 ctx.fillRect(this.x - this.width/4, this.y - this.height, this.width/2, this.height);
-                //ctx.restore();
+                ctx.restore();
                 
                 // Energy core at front
                 ctx.fillStyle = '#DBEAFE';
