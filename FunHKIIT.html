@@ -1117,8 +1117,8 @@
         // Star background
         const stars = [];
         function initStars() {
-            stars.length = 0;
-            const starCount = 0;
+            //stars.length = 0;
+            //const starCount = 0;
             
             // for (let i = 0; i < starCount; i++) {
             //     stars.push({
@@ -1258,20 +1258,20 @@
         
         function resizeCanvas() {
             const container = canvas.parentElement;
-            //const dpr = window.devicePixelRatio || 1;
+            const dpr = window.devicePixelRatio || 1;
 
-            canvas.width = container.clientWidth;
-            canvas.height = (window.innerHeight * 0.75);
+            canvas.width = container.clientWidth * dpr;
+            canvas.height = (window.innerHeight * 0.75) * dpr;
 
-            canvas.style.width = container.clientWidth + "px";
+            canvas.style.width = (container.clientWidth) + "px";
             canvas.style.height = (window.innerHeight * 0.75) + "px";
 
-            //ctx.scale(dpr, dpr); // 縮放繪製內容
+            ctx.scale(dpr, dpr); // 縮放繪製內容
             // Re-initialize stars and clouds after resize
-            // if (Clouds.length > 0) {
-            //     //initStars();
-            //     initClouds();
-            // }
+            if (clouds.length === 0) {
+                initClouds();
+            }
+           
         }
         
         function startGame() {
@@ -1553,9 +1553,9 @@
             update(deltaTime);   
             // Render game
             render();
-            // if (clouds.length === 0) {
-            //     initClouds();
-            // }
+            if (clouds.length === 0) {
+                initClouds();
+            }
             // Request next frame
             requestAnimationFrame(gameLoop);
         }
