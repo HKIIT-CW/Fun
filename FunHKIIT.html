@@ -735,8 +735,8 @@
                 
                 // Glow effect
                 ctx.save();
-                ctx.shadowColor = POWERUP_TYPES.AIST.color;
-                ctx.shadowBlur = 15;
+                //ctx.shadowColor = POWERUP_TYPES.AIST.color;
+                //ctx.shadowBlur = 15;
                 ctx.fillRect(this.x - this.width/4, this.y - this.height, this.width/2, this.height);
                 ctx.restore();
                 
@@ -1092,7 +1092,7 @@
                 ctx.fill();
                 
                 // Add some particles
-                const particleCount = 6;
+                const particleCount = 3;
                 const angleStep = (Math.PI * 2) / particleCount;
                 
                 ctx.fillStyle = '#FBBF24';
@@ -1154,16 +1154,16 @@
         const clouds = [];
         function initClouds() {
             clouds.length = 0;
-            const cloudCount = 3;
+            const cloudCount = Math.floor(canvas.width / 200);
             
             for (let i = 0; i < cloudCount; i++) {
                 clouds.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    width: 80 + Math.random() * 120,
-                    height: 40 + Math.random() * 60,
+                    width: 60 + Math.random() * 40,
+                    height: 30 + Math.random() * 20,
                     speed: 0.5 + Math.random() * 0.5,
-                    opacity: 0.1 + Math.random() * 0.2
+                   opacity: 1 
                 });
             }
         }
@@ -1202,17 +1202,17 @@
                 ctx.fill();
                 
                 // Add bumps to make it cloud-like
-                const bumpCount = 6;
-                for (let i = 0; i < bumpCount; i++) {
-                    const angle = (i / bumpCount) * Math.PI * 2;
-                    const bumpX = centerX + Math.cos(angle) * radiusX * 0.7;
-                    const bumpY = centerY + Math.sin(angle) * radiusY * 0.7;
-                    const bumpRadius = (radiusX + radiusY) / 6;
+                // const bumpCount = 6;
+                // for (let i = 0; i < bumpCount; i++) {
+                //     const angle = (i / bumpCount) * Math.PI * 2;
+                //     const bumpX = centerX + Math.cos(angle) * radiusX * 0.7;
+                //     const bumpY = centerY + Math.sin(angle) * radiusY * 0.7;
+                //     const bumpRadius = (radiusX + radiusY) / 6;
                     
-                    ctx.beginPath();
-                    ctx.arc(bumpX, bumpY, bumpRadius, 0, Math.PI * 2);
-                    ctx.fill();
-                }
+                //     ctx.beginPath();
+                //     ctx.arc(bumpX, bumpY, bumpRadius, 0, Math.PI * 2);
+                //     ctx.fill();
+                // }
             });
         }
         
@@ -1241,7 +1241,7 @@
             spawnTimer = 0;
             
             // Initialize stars and clouds
-            initStars();
+            //initStars();
             initClouds();
             
             // Add event listeners
@@ -1261,10 +1261,10 @@
             canvas.height = window.innerHeight * 0.75;
             
             // Re-initialize stars and clouds after resize
-            if (stars.length > 0) {
-                initStars();
-                initClouds();
-            }
+            // if (Clouds.length > 0) {
+            //     //initStars();
+            //     initClouds();
+            // }
         }
         
         function startGame() {
@@ -1460,7 +1460,7 @@
                 player.update(deltaTime);
                 
                 // Update stars and clouds (moving background)
-                updateStars();
+                //updateStars();
                 updateClouds();
                 
                 // Update bullets
@@ -1543,7 +1543,9 @@
             
             // Render game
             render();
-            
+            // if (clouds.length === 0) {
+            //     initClouds();
+            // }
             // Request next frame
             requestAnimationFrame(gameLoop);
         }
