@@ -1315,8 +1315,11 @@
             if (!gameRunning) return;
             
             const rect = canvas.getBoundingClientRect();
-            const x = e.touches[0].clientX - rect.left;
-            const y = e.touches[0].clientY - rect.top;
+            const scaleX = canvas.width / rect.width;    // 考慮 Canvas 縮放比例
+            const scaleY = canvas.height / rect.height;
+
+            const x = (e.touches[0].clientX - rect.left) * scaleX;
+            const y = (e.touches[0].clientY - rect.top) * scaleY;
             
             player.targetX = x - player.width / 2;
             player.targetY = y - player.height / 2;
